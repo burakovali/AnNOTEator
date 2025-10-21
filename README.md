@@ -1,6 +1,6 @@
-# USEFULL NOTES FOR WHOM SUFFER TO BUILD PROJECT - worked for my son :) 
+# Handy Notes To Build Project
 
-## to build container from scratch
+## Build container from scratch
 
 I have an NVIDIA based GPU in my host computer so did some config to make docker image compile and  work 
 flawless for me (btw, my Linux disto is archlinux):
@@ -47,7 +47,7 @@ chmod 777 audiocon.sh
 ls output
 demo.musicxml  demo.pdf
 
-## to use prebuilt docker image 
+## Use prebuilt docker image 
 
 to be updated
 
