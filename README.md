@@ -48,9 +48,10 @@ ls output
 demo.musicxml  demo.pdf
 
 ## Use prebuilt docker image 
-
-to be updated
-
+ - make sure steps 1, 2, 4  are completed (skip 3, since a prebuilt docker image will be pulled) 
+ - docker pull ghcr.io/burakovali/cb-42:latest
+ - repeat step 5
+   
 # The AnNOTEators Capstone Project
 Greetings! This is our Summer 2022 Capstone Project for the Master of Applied Data Science at the University of Michigan School of Information. Our goal is to predict drum notes from audio to create sheet music. The team consists of Christopher Brown, Stanley Hung, and Severus Chang.  
 
