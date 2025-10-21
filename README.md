@@ -1,3 +1,56 @@
+# USEFULL NOTES FOR WHOM SUFFER TO BUILD PROJECT - worked for my son :) 
+
+## to build container from scratch
+
+I have an NVIDIA based GPU in my host computer so did some config to make docker image compile and  work 
+flawless for me (btw, my Linux disto is archlinux):
+
+- Make sure your docker daemon config has some lines similar to below:
+cat  /etc/docker/daemon.json
+{
+    "dns": [
+        "8.8.8.8",
+        "1.1.1.1"
+    ],
+    "runtimes": {
+        "nvidia": {
+            "args": [],
+            "path": "nvidia-container-runtime"
+        }
+    }
+}%
+
+- Make sure nvidia-container-toolkit is installed in your disto:
+pacman -Ss nvidia-container-toolkit
+extra/nvidia-container-toolkit 1.17.9-1 [installed]
+    NVIDIA container toolkit
+
+- (1) If you change the daemon config or install toolkit for the very first time make sure you restart docker service:
+
+sudo nvidia-ctk runtime configure --runtime=docker
+sudo systemctl restart docker
+
+- (2) Checkout the repo by:
+git clone https://github.com/burakovali/AnNOTEator.git cb42
+
+- (3) Compile the docker image in the parent folder of the cloned repo:
+docker build --network=host -t cb42-app cb42/
+
+- (4) To use compiled image for the purpose, copy audiocon.sh script to the same parent folder
+cp cb42/audiocon.sh .
+chmod 777 audiocon.sh
+
+- (5) Make sure you have an input mp3 file in the same directory and use script to start:
+./audiocon.sh b.mp3 -on demo -km performance -bpm 100
+
+- (6) b.mp3 is my input audio file and when done it creates and output directory with files inside:
+ls output
+demo.musicxml  demo.pdf
+
+## to use prebuilt docker image 
+
+to be updated
+
 # The AnNOTEators Capstone Project
 Greetings! This is our Summer 2022 Capstone Project for the Master of Applied Data Science at the University of Michigan School of Information. Our goal is to predict drum notes from audio to create sheet music. The team consists of Christopher Brown, Stanley Hung, and Severus Chang.  
 
